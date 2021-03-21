@@ -15,15 +15,6 @@ public class ChatMessageForm {
         WHISPER
     }
 
-    public ChatMessage toChatMessage(){
-        String messageChatText =  switch (messageType) {
-            case SAY ->     chatText;
-            case SHOUT ->   chatText.toUpperCase();
-            case WHISPER -> chatText.toLowerCase();
-        };
-        return new ChatMessage(username, messageChatText);
-    }
-
     public void clean(){
         this.chatText = "";
         this.messageType = MessageType.SAY;

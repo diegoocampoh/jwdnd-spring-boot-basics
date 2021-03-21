@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.security.Principal;
+
 @Controller
 public class ChatController {
 
@@ -29,9 +31,11 @@ public class ChatController {
     @PostMapping("/chat")
     public String sendChat(
             @ModelAttribute("newChat") ChatMessageForm newChat,
-            Model model
+            Model model,
+            Principal principal
     ){
-        chatService.addChat(newChat.toChatMessage());
+        newChat.setUsername(principal.getName());
+        chatService.addChat(newChat);
         newChat.clean();
         model.addAttribute("chats", chatService.getChats());
         return "chat";
