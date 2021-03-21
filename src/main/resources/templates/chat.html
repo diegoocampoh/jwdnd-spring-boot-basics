@@ -2,7 +2,6 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <title>Latin chat</title>
 </head>
     <body>
@@ -12,14 +11,12 @@
                 <span th:text="${chat.username}"> User </span>
             </div>
             <div class="col-sm">
-                <span th:text="${chat.chatText}"> Message </span>
+                <span th:text="${chat.messagetext}"> Message </span>
             </div>
         </div>
     </div>
     <div id="chat-submission" class="container-sm">
         <form action="#" th:action="@{/chat}" th:object="${newChat}" method="POST">
-            <label for="username">Username:</label>
-            <input id="username" type="text" name="chatUser" th:field="*{username}">
             <label for="messageText">Message Text:</label>
             <input id="messageText" type="text" name="chatText" th:field="*{chatText}">
             <label for="messageType">Message Type: </label>
